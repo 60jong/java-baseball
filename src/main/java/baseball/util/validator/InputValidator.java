@@ -2,22 +2,35 @@ package baseball.util.validator;
 
 import baseball.constant.GameConstants;
 
+import java.util.List;
+
 import static baseball.constant.GameConstants.*;
+import static baseball.constant.GameMessages.*;
 
 public class InputValidator {
 
-    public static void validate(String userInput) {
-        if (!isLengthEqualsTo(userInput)) {
-            exception();
-        }
-
-        if (!isAllNumbers(userInput)) {
-            exception();
+    public static void validateExitCode(String exitCode) {
+        if (!includedInExitCodes(exitCode)) {
+            exception(INPUT_EXIT_CODE_EXCEPTION_MESSAGE);
         }
     }
 
-    private static void exception() {
-        throw new IllegalArgumentException(String.format("입력은 %d자리의 숫자로 이루어져야 합니다.", BASEBALL_NUMBER_COUNT));
+    private static boolean includedInExitCodes(String exitCode) {
+        return GameConstants.getExitCodes().contains(exitCode);
+    }
+
+    public static void validateNumbers(String userInput) {
+        if (!isLengthEqualsTo(userInput)) {
+            exception(INPUT_EXCEPTION_MESSAGE);
+        }
+
+        if (!isAllNumbers(userInput)) {
+            exception(INPUT_EXCEPTION_MESSAGE);
+        }
+    }
+
+    private static void exception(String message) {
+        throw new IllegalArgumentException(message);
     }
 
     private static boolean isAllNumbers(String input) {
@@ -32,4 +45,6 @@ public class InputValidator {
     private static boolean isLengthEqualsTo(String input) {
         return input.length() == BASEBALL_NUMBER_COUNT;
     }
+
+
 }
