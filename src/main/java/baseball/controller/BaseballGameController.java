@@ -8,12 +8,16 @@ import baseball.util.validator.InputValidator;
 import baseball.view.input.InputView;
 import baseball.view.output.OutputView;
 import camp.nextstep.edu.missionutils.Console;
-
 import static baseball.constant.GameConstants.*;
 
 public class BaseballGameController {
 
-    private BaseballGameService service;
+    private final BaseballGameService service;
+
+    // Constructor
+    public BaseballGameController() {
+        this.service = new BaseballGameService();
+    }
 
     public void startGame() throws IllegalArgumentException {
         do {
@@ -32,7 +36,7 @@ public class BaseballGameController {
 
     private void initialize() {
         InputView.printGameStartMessage();
-        this.service = new BaseballGameService();
+        this.service.initialize();
     }
 
     private void playing() throws IllegalArgumentException {

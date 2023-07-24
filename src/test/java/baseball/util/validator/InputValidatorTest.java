@@ -14,7 +14,7 @@ class InputValidatorTest {
     void input_length_smaller_than_numberCount() {
         String input = "12";
 
-        assertThatThrownBy(() -> InputValidator.validate(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> InputValidator.validateNumbers(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -22,7 +22,7 @@ class InputValidatorTest {
     void input_length_longer_than_numberCount() {
         String input = "1234";
 
-        assertThatThrownBy(() -> InputValidator.validate(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> InputValidator.validateNumbers(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -30,6 +30,6 @@ class InputValidatorTest {
     void input_is_not_all_numbers() {
         String input = "abcd";
 
-        assertThatThrownBy(() -> InputValidator.validate(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> InputValidator.validateNumbers(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }

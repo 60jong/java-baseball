@@ -11,6 +11,7 @@ public class Computer {
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
             System.out.println("게임을 종료합니다.");
+            throw exception;
         }
     }
 }

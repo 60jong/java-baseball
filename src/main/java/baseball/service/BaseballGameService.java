@@ -9,11 +9,10 @@ import static baseball.constant.GameConstants.*;
 
 public class BaseballGameService {
 
-    private final BaseballNumbers targetBaseballNumbers;
-    private final BaseballGameStatus gameStatus;
+    private BaseballNumbers targetBaseballNumbers;
+    private BaseballGameStatus gameStatus;
 
-    // Constructor
-    public BaseballGameService() {
+    public void initialize() {
         this.targetBaseballNumbers = makeTargetBaseballNumbers(BASEBALL_NUMBER_COUNT);
         this.gameStatus = new BaseballGameStatus();
     }
